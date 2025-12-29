@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bad Script", cursive;
+}
+
+body {
+  font-family: "Segoe UI", "Arial", sans-serif;
+  background: linear-gradient(135deg, #0c1445, #1a2a6c, #0c1445);
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #08f;
+  animation: glow 2s infinite alternate;
+}
+
+.message {
+  font-size: 1.4rem;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1.2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: #fff;
+  font-size: 1.2rem;
+  user-select: none;
+  opacity: 0.9;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh) rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #08f;
+  }
+  to {
+    text-shadow: 0 0 15px #fff, 0 0 25px #0ff, 0 0 35px #0af, 0 0 45px #06f;
+  }
+}
+
+footer {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+@media (max-width: 360px) {
+  h1 {
+    font-size: 2.3rem;
+  }
+  .message {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+}
