@@ -80,3 +80,18 @@ footer {
     font-size: 0.95rem;
   }
 }
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh) var(--rotation, rotate(360deg));
+  }
+}

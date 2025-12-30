@@ -34,3 +34,11 @@ function createSnowflake() {
 }
 
 const snowInterval = setInterval(createSnowflake, 130);
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    clearInterval(snowInterval);
+    document.querySelectorAll('.snowflake').forEach(el => el.remove());
+    snowflake_count = 0;
+  }
+});
