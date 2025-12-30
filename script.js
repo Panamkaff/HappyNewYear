@@ -1,36 +1,36 @@
-function createSnowflake() {
-  const snowflake = document.createElement("div");
-  snowflake.innerHTML = "❄";
-  snowflake.classList.add("snowflake");
+let snowflakeCount = 0;
+const maxSnowflakes = 90;
 
-  // Случайная позиция по горизонтали
-  const startPosition = Math.random() * window.innerWidth;
+function createSnowflake() {
+  if (snowflakeCount >= maxSnowflakes) return;
+
+  const snowflake = document.createElement('div');
+  const snowflakes = ['❄', '❅'];
+  snowflake.innerHTML = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+  snowflake.classList.add('snowflake');
+
+  const maxLeft = document.documentElement.clientWidth - 15;
+  const startPosition = Math.random() * Math.max(0, maxLeft);
   snowflake.style.left = `${startPosition}px`;
 
-  // Случайный размер
-  const size = 0.5 + Math.random() * 1.2;
+  const size = 0.5 + Math.random() * 0.7;
   snowflake.style.fontSize = `${size}rem`;
 
-  // Случайная прозрачность
-  snowflake.style.opacity = 0.4 + Math.random() * 0.6;
+  snowflake.style.opacity = 0.2 + Math.random() * 0.35;
 
-  // Случайная скорость падения (от 5 до 15 секунд)
-  const duration = 5 + Math.random() * 10;
+  const duration = 2.5 + Math.random() * 3.5;
   snowflake.style.animationDuration = `${duration}s`;
 
-  document.body.appendChild(snowflake);
+  const rotation = Math.random() > 0.5 ? 'rotate(360deg)' : 'rotate(-360deg)';
+  snowflake.style.setProperty('--rotation', rotation);
 
-  // Удаляем снежинку после окончания анимации
+  document.body.appendChild(snowflake);
+  snowflakeCount++;
+
   setTimeout(() => {
     snowflake.remove();
+    snowflakeCount--;
   }, duration * 1000);
 }
 
-// Запускаем снежинки каждые 200 мс
-setInterval(createSnowflake, 200);
-
-// Адаптация при изменении размера окна
-window.addEventListener("resize", () => {
-  const snowflakes = document.querySelectorAll(".snowflake");
-  snowflakes.forEach((sf) => sf.remove());
-});
+const snowInterval = setInterval(createSnowflake, 130);
